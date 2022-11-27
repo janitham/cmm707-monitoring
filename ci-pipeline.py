@@ -2,6 +2,8 @@ import subprocess
 import time
 import fileinput
 import re
+import requests
+import json
 
 GITOPS_SYNC_REPO = "C:/workspace/CMM707/sync-repos/registration-service"
 GITOPS_REPOSITORY = "C:/workspace/CMM707/argocd-example-apps"
@@ -9,6 +11,8 @@ GITOPS_BRANCH = "master"
 
 SERVICE_NAME = "registration"
 BUILD_VERSION = ""
+
+DEPLOYMENT_PORT = "8080"
 
 def executeCommand(command, directory):
     return  subprocess.check_output(command, shell=True, cwd=directory)
@@ -41,6 +45,16 @@ def updatingGitOpsRepo():
     
 def waitUntilSync():
     print("Waiting until the version is synced")
+    BUILD_VERSION = executeCommand("powershell.exe cat ./dVersion", GITOPS_SYNC_REPO).decode("utf-8").strip()
+    url = "http://localhost:"+DEPLOYMENT_PORT+"/actuator/info"
+    while True:
+        response = requests.request("GET", url, headers={}, data={})
+        versionDeployed = str(json.loads(response.text)['build']['version']).replace("+", "_").strip()
+        if BUILD_VERSION == versionDeployed:
+            print("Deployment sucessful")
+            break
+        time.sleep(10)    
+    
     
 def runIntegrationTests():
     print("Executing Integration Tests....")
