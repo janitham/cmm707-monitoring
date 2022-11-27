@@ -48,12 +48,15 @@ def waitUntilSync():
     BUILD_VERSION = executeCommand("powershell.exe cat ./dVersion", GITOPS_SYNC_REPO).decode("utf-8").strip()
     url = "http://localhost:"+DEPLOYMENT_PORT+"/actuator/info"
     while True:
-        response = requests.request("GET", url, headers={}, data={})
-        versionDeployed = str(json.loads(response.text)['build']['version']).replace("+", "_").strip()
-        if BUILD_VERSION == versionDeployed:
-            print("Deployment sucessful")
-            break
-        time.sleep(10)    
+        try:
+            response = requests.request("GET", url, headers={}, data={})
+            versionDeployed = str(json.loads(response.text)['build']['version']).replace("+", "_").strip()
+            if BUILD_VERSION == versionDeployed:
+                print("Deployment sucessful")
+                break
+            time.sleep(10)
+        except:
+            print("Inturrpution notified")
     
     
 def runIntegrationTests():
