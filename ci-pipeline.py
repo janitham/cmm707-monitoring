@@ -39,7 +39,7 @@ def updatingGitOpsRepo():
     replaceFileLine(values_path, "  tag:", "  tag: "+BUILD_VERSION)
     print("Updated version in the git ops")
     executeCommand("git add  charts/*", GITOPS_REPOSITORY)
-    executeCommand("git commit -m \"Updated Version\"", GITOPS_REPOSITORY)
+    executeCommand("git commit -m \"Updated Version to "+BUILD_VERSION+"\"", GITOPS_REPOSITORY)
     executeCommand("git push", GITOPS_REPOSITORY)
     
     
