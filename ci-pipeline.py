@@ -61,6 +61,7 @@ def waitUntilSync():
     
 def runIntegrationTests():
     print("Executing Integration Tests....")
+    print(executeCommand("python.exe registration-test-suite.py", ".").decode("utf-8").strip())
     
 def job():
     result = executeCommand("git pull", GITOPS_SYNC_REPO)
