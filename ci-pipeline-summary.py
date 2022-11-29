@@ -61,7 +61,7 @@ def waitUntilSync():
     
 def runIntegrationTests():
     print("Executing Integration Tests....")
-    print(executeCommand("python.exe registration-test-suite.py", ".").decode("utf-8").strip())
+    print(executeCommand("python.exe summary-test-suite.py", ".").decode("utf-8").strip())
     
 def job():
     result = executeCommand("git pull", GITOPS_SYNC_REPO)
@@ -73,7 +73,7 @@ def job():
         buildDockerImage()
         updatingGitOpsRepo()
         waitUntilSync()
-        #runIntegrationTests()
+        runIntegrationTests()
     
 
 if __name__ == "__main__":
