@@ -3,8 +3,8 @@ import json
 
 SERVICE_NAME = "registration"
 BUILD_VERSION = ""
-
 DEPLOYMENT_PORT = "8080"
+HOST="localhost"
 
 defaultPayload = json.dumps({
       "name": "charurika",
@@ -22,21 +22,21 @@ class Tester:
        self.msg = "Default constructor"
        
     def createVoter(self):
-        url = "http://localhost:"+DEPLOYMENT_PORT+"/voters"
+        url = "http://"+HOST+":"+DEPLOYMENT_PORT+"/voters"
         response = requests.request("POST", url, headers=headers, data=defaultPayload)
         if response.status_code != 201:
             raise "Error creating voter"
         self.response = response.text
         
     def updateUser(self) :
-        url = "http://localhost:"+DEPLOYMENT_PORT+"/voters"
+        url = "http://"+HOST+":"+DEPLOYMENT_PORT+"/voters"
         response = requests.request("PUT", url, headers=headers, data=self.response)
         if response.status_code != 200:
             raise "Error updating voter"
         
     def deleteUser(self):
         user = json.loads(self.response)['id']
-        url = "http://localhost:"+DEPLOYMENT_PORT+"/voters/" + user
+        url = "http://"+HOST+":"+DEPLOYMENT_PORT+"/voters/" + user
         response = requests.request("DELETE", url, headers=headers, data={})
         if response.status_code != 200:
             raise "Error deleting voter"
