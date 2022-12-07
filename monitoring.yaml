@@ -27,8 +27,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    run: grapha
-  name: grapha
+    run: grafana
+  name: grafana
   namespace: monitoring
 spec:
   containers:
@@ -36,7 +36,7 @@ spec:
     - name: GF_SECURITY_ADMIN_PASSWORD
       value: admin
     image: grafana/grafana-oss:8.5.2
-    name: grapha
+    name: grafana
     ports:
     - containerPort: 3000
     resources: {}
@@ -69,7 +69,35 @@ data:
         static_configs:
           - targets: ['summary.dev.svc.cluster.local:8081']
             labels:
-              application: 'Summary Service in the Dev Environment'        
+              application: 'Summary Service in the Dev Environment'
+      - job_name: 'Registration Service (Test)'
+        metrics_path: '/actuator/prometheus'
+        scrape_interval: 2s
+        static_configs:
+          - targets: ['registration.test.svc.cluster.local:8080']
+            labels:
+              application: 'Registration Service in the Test Environment'
+      - job_name: 'Summary Service (Test)'
+        metrics_path: '/actuator/prometheus'
+        scrape_interval: 2s
+        static_configs:
+          - targets: ['summary.test.svc.cluster.local:8081']
+            labels:
+              application: 'Summary Service in the Test Environment'
+      - job_name: 'Registration Service (Prod)'
+        metrics_path: '/actuator/prometheus'
+        scrape_interval: 2s
+        static_configs:
+          - targets: ['registration.prod.svc.cluster.local:8080']
+            labels:
+              application: 'Registration Service in the Prod Environment'
+      - job_name: 'Summary Service (Prod)'
+        metrics_path: '/actuator/prometheus'
+        scrape_interval: 2s
+        static_configs:
+          - targets: ['summary.prod.svc.cluster.local:8081']
+            labels:
+              application: 'Summary Service in the Prod Environment'              
 kind: ConfigMap
 metadata:
   name: prometheus
