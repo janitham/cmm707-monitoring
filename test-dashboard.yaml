@@ -7,7 +7,7 @@ metadata:
 ---
 apiVersion: v1
 data: 
-  dev.json: |
+  test.json: |
     {
       "annotations": {
         "list": [
@@ -117,7 +117,7 @@ data:
                 "type": "prometheus",
                 "uid": "PBFA97CFB590B2093"
               },
-              "expr": "up{application=\"Registration Service in the Dev Environment\", instance=\"registration.dev.svc.cluster.local:8080\", job=\"Registration Service (DEV)\"}",
+              "expr": "up{application=\"Registration Service in the Test Environment\", instance=\"registration.test.svc.cluster.local:8080\", job=\"Registration Service (Test)\"}",
               "refId": "A"
             }
           ],
@@ -203,7 +203,7 @@ data:
                 "type": "prometheus",
                 "uid": "PBFA97CFB590B2093"
               },
-              "expr": "up{application=\"Summary Service in the Dev Environment\", instance=\"summary.dev.svc.cluster.local:8081\", job=\"Summary Service (DEV)\"}",
+              "expr": "up{application=\"Summary Service in the Test Environment\", instance=\"summary.test.svc.cluster.local:8081\", job=\"Summary Service (Test)\"}",
               "refId": "A"
             }
           ],
@@ -289,7 +289,7 @@ data:
                 "type": "prometheus",
                 "uid": "PBFA97CFB590B2093"
               },
-              "expr": "\r\nsystem_cpu_usage{application=\"Registration Service in the Dev Environment\", instance=\"registration.dev.svc.cluster.local:8080\", job=\"Registration Service (DEV)\"}",
+              "expr": "\r\nsystem_cpu_usage{application=\"Registration Service in the Test Environment\", instance=\"registration.test.svc.cluster.local:8080\", job=\"Registration Service (Test)\"}",
               "refId": "A"
             }
           ],
@@ -375,7 +375,7 @@ data:
                 "type": "prometheus",
                 "uid": "PBFA97CFB590B2093"
               },
-              "expr": "\r\nsystem_cpu_usage{application=\"Summary Service in the Dev Environment\", instance=\"summary.dev.svc.cluster.local:8081\", job=\"Summary Service (DEV)\"}",
+              "expr": "\r\nsystem_cpu_usage{application=\"Summary Service in the Test Environment\", instance=\"summary.test.svc.cluster.local:8081\", job=\"Summary Service (Test)\"}",
               "refId": "A"
             }
           ],
@@ -461,7 +461,7 @@ data:
                 "type": "prometheus",
                 "uid": "PBFA97CFB590B2093"
               },
-              "expr": "jvm_buffer_memory_used_bytes{application=\"Registration Service in the Dev Environment\", id=\"direct\", instance=\"registration.dev.svc.cluster.local:8080\", job=\"Registration Service (DEV)\"}",
+              "expr": "jvm_buffer_memory_used_bytes{application=\"Registration Service in the Test Environment\", id=\"direct\", instance=\"registration.test.svc.cluster.local:8080\", job=\"Registration Service (Test)\"}",
               "refId": "A"
             }
           ],
@@ -547,7 +547,7 @@ data:
                 "type": "prometheus",
                 "uid": "PBFA97CFB590B2093"
               },
-              "expr": "jvm_buffer_memory_used_bytes{application=\"Summary Service in the Dev Environment\", id=\"direct\", instance=\"summary.dev.svc.cluster.local:8081\", job=\"Summary Service (DEV)\"}",
+              "expr": "jvm_buffer_memory_used_bytes{application=\"Summary Service in the Test Environment\", id=\"direct\", instance=\"summary.test.svc.cluster.local:8081\", job=\"Summary Service (Test)\"}",
               "refId": "A"
             }
           ],
@@ -568,12 +568,12 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "Dev Environment",
+      "title": "Test Environment",
       "uid": null,
       "version": 1,
       "weekStart": ""
     }             
 kind: ConfigMap
 metadata:
-  name: dev-dashboard
+  name: test-dashboard
   namespace: monitoring

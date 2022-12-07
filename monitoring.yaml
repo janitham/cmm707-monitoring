@@ -4,13 +4,20 @@ data:
   dashboards.yaml: |
     apiVersion: 1
     providers:
-     - name: 'default'
+     - name: 'dev'
+       #orgId: 1
+       folder: 'Dev'
+       #folderUid: ''
+       type: file
+       options:
+         path: /var/lib/grafana/dashboards/dev.json
+     - name: 'test'
        #orgId: 1
        folder: 'Test'
        #folderUid: ''
        type: file
        options:
-         path: /var/lib/grafana/dashboards/dev.json
+         path: /var/lib/grafana/dashboards/test.json    
 kind: ConfigMap
 metadata:
   name: grafana-dashboards
@@ -112,6 +119,9 @@ spec:
     - name: dev-dashboard
       mountPath: /var/lib/grafana/dashboards/dev.json
       subPath: dev.json
+    - name: test-dashboard
+      mountPath: /var/lib/grafana/dashboards/test.json
+      subPath: test.json  
     - name: dashboards
       mountPath: usr/share/grafana/conf/provisioning/dashboards/dashboards.yaml
       subPath: dashboards.yaml  
@@ -126,7 +136,10 @@ spec:
       name: grafana-dashboards    
   - name: dev-dashboard
     configMap:
-      name: dev-dashboard 
+      name: dev-dashboard
+  - name: test-dashboard
+    configMap:
+      name: test-dashboard     
   
 ---
 apiVersion: v1
