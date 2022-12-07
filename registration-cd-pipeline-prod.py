@@ -29,7 +29,7 @@ def updatingGitOpsRepo():
     print("Updating the GitOPs repository....")
     executeCommand("git checkout " + GITOPS_BRANCH, GITOPS_REPOSITORY)
     values_path = GITOPS_REPOSITORY + "/charts/" + SERVICE_NAME + "/values.yaml"
-    BUILD_VERSION = executeCommand("kubectl get deploy registration -n dev -o jsonpath='{.metadata.labels.version}'", GITOPS_SYNC_REPO).decode("utf-8").replace("'", "")
+    BUILD_VERSION = executeCommand("kubectl get deploy registration -n test -o jsonpath='{.metadata.labels.version}'", GITOPS_SYNC_REPO).decode("utf-8").replace("'", "")
     print(BUILD_VERSION)
     replaceFileLine(values_path, "  tag:", "  tag: "+BUILD_VERSION)
     print("Updated version in the git ops")
@@ -40,7 +40,7 @@ def updatingGitOpsRepo():
     
 def waitUntilSync():
     print("Waiting until the version is synced")
-    BUILD_VERSION = executeCommand("kubectl get deploy registration -n dev -o jsonpath='{.metadata.labels.version}'", GITOPS_SYNC_REPO).decode("utf-8").replace("'", "").strip()
+    BUILD_VERSION = executeCommand("kubectl get deploy registration -n test -o jsonpath='{.metadata.labels.version}'", GITOPS_SYNC_REPO).decode("utf-8").replace("'", "").strip()
     url = "http://localhost:"+DEPLOYMENT_PORT+"/actuator/info"
     while True:
         try:
