@@ -17,7 +17,14 @@ data:
        #folderUid: ''
        type: file
        options:
-         path: /var/lib/grafana/dashboards/test.json    
+         path: /var/lib/grafana/dashboards/test.json
+     - name: 'prod'
+       #orgId: 1
+       folder: 'Prod'
+       #folderUid: ''
+       type: file
+       options:
+         path: /var/lib/grafana/dashboards/prod.json          
 kind: ConfigMap
 metadata:
   name: grafana-dashboards
@@ -121,7 +128,10 @@ spec:
       subPath: dev.json
     - name: test-dashboard
       mountPath: /var/lib/grafana/dashboards/test.json
-      subPath: test.json  
+      subPath: test.json
+    - name: prod-dashboard
+      mountPath: /var/lib/grafana/dashboards/prod.json
+      subPath: prod.json  
     - name: dashboards
       mountPath: usr/share/grafana/conf/provisioning/dashboards/dashboards.yaml
       subPath: dashboards.yaml  
@@ -139,7 +149,10 @@ spec:
       name: dev-dashboard
   - name: test-dashboard
     configMap:
-      name: test-dashboard     
+      name: test-dashboard
+  - name: prod-dashboard
+    configMap:
+      name: prod-dashboard      
   
 ---
 apiVersion: v1
