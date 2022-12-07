@@ -1,9 +1,21 @@
 ---
 apiVersion: v1
-kind: Namespace
+data: 
+  dashboards.yaml: |
+    apiVersion: 1
+    providers:
+     - name: 'default'
+       #orgId: 1
+       folder: 'Test'
+       #folderUid: ''
+       type: file
+       options:
+         path: /var/lib/grafana/dashboards/dev.json
+kind: ConfigMap
 metadata:
-  name: monitoring
-  
+  name: grafana-dashboards
+  namespace: monitoring 
+
 ---
 apiVersion: v1
 data: 
@@ -19,37 +31,7 @@ data:
 kind: ConfigMap
 metadata:
   name: grafana-prometheus
-  namespace: monitoring  
-  
-  
----
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    run: grafana
-  name: grafana
-  namespace: monitoring
-spec:
-  containers:
-  - env:
-    - name: GF_SECURITY_ADMIN_PASSWORD
-      value: admin
-    image: grafana/grafana-oss:8.5.2
-    name: grafana
-    ports:
-    - containerPort: 3000
-    resources: {}
-    volumeMounts:
-    - name: prometheus
-      mountPath: /usr/share/grafana/conf/provisioning/datasources/prometheus.yaml
-      subPath: prometheus.yaml  
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
-  volumes:
-  - name: prometheus
-    configMap:
-      name: grafana-prometheus      
+  namespace: monitoring        
 
 ---
 apiVersion: v1
@@ -102,6 +84,49 @@ kind: ConfigMap
 metadata:
   name: prometheus
   namespace: monitoring
+  
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: grafana
+  name: grafana
+  namespace: monitoring
+spec:
+  containers:
+  - env:
+    - name: GF_PATHS_PROVISIONING
+      value: /usr/share/grafana/conf/provisioning
+    - name: GF_SECURITY_ADMIN_PASSWORD
+      value: admin
+    image: grafana/grafana-oss:8.5.2
+    name: grafana
+    ports:
+    - containerPort: 3000
+    resources: {}
+    volumeMounts:
+    - name: prometheus
+      mountPath: /usr/share/grafana/conf/provisioning/datasources/prometheus.yaml
+      subPath: prometheus.yaml  
+    - name: dev-dashboard
+      mountPath: /var/lib/grafana/dashboards/dev.json
+      subPath: dev.json
+    - name: dashboards
+      mountPath: usr/share/grafana/conf/provisioning/dashboards/dashboards.yaml
+      subPath: dashboards.yaml  
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: prometheus
+    configMap:
+      name: grafana-prometheus
+  - name: dashboards
+    configMap:
+      name: grafana-dashboards    
+  - name: dev-dashboard
+    configMap:
+      name: dev-dashboard 
   
 ---
 apiVersion: v1
