@@ -6,7 +6,7 @@ import requests
 import json
 
 GITOPS_SYNC_REPO = "C:\workspace\CMM707\sync-repos\summary-service"
-GITOPS_REPOSITORY = "C:/workspace/CMM707/argocd-example-apps"
+GITOPS_REPOSITORY = "C:/workspace/CMM707/implementation/argocd-gitops"
 GITOPS_BRANCH = "master"
 
 SERVICE_NAME = "summary"
