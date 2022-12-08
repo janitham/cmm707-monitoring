@@ -12,7 +12,8 @@ defaultPayload = json.dumps({
 })
     
 headers = {
-  'Content-Type': 'application/json'
+    'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',
+    'Content-Type': 'application/json'
 }
 
 class Tester:

@@ -14,6 +14,11 @@ BUILD_VERSION = ""
 
 DEPLOYMENT_PORT = "8080"
 
+headers = {
+    'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',
+    'Content-Type': 'application/json'
+}
+
 def executeCommand(command, directory):
     return  subprocess.check_output(command, shell=True, cwd=directory)
     
@@ -44,7 +49,7 @@ def waitUntilSync():
     url = "http://localhost:"+DEPLOYMENT_PORT+"/actuator/info"
     while True:
         try:
-            response = requests.request("GET", url, headers={}, data={})
+            response = requests.request("GET", url, headers=headers, data={})
             versionDeployed = str(json.loads(response.text)['build']['version']).replace("+", "_").strip()
             if BUILD_VERSION == versionDeployed:
                 print("Deployment sucessful")
