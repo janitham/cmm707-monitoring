@@ -34,10 +34,235 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": null,
+      "id": 2,
       "links": [],
       "liveNow": false,
       "panels": [
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "P689D2A0564FBD208"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 8,
+            "x": 0,
+            "y": 0
+          },
+          "id": 4,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true
+          },
+          "pluginVersion": "9.3.1",
+          "targets": [
+            {
+              "columns": [],
+              "data": "Ranking,\tTeam Name,Score\n1,Mumbai Indians,32259\n2,Royal Challengers Bangalore,30183\n3,Kings XI Punjab,29990\n4,Kolkata Knight Riders,29357\n5,Chennai Super Kings,28344\n6,Rajasthan Royals,24480\n7,Delhi Daredevils,24264\n8,Sunrisers Hyderabad,19314\n9,Deccan Chargers,11448\n10,Pune Warriors,6348",
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "P689D2A0564FBD208"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "refId": "A",
+              "root_selector": "",
+              "source": "inline",
+              "type": "csv",
+              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "2. Top ten teams based on total number of runs",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "P689D2A0564FBD208"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 8,
+            "y": 0
+          },
+          "id": 2,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true
+          },
+          "pluginVersion": "9.3.1",
+          "targets": [
+            {
+              "columns": [],
+              "data": "Type,Count\nExtra Runs Taken,10233\nNo Runs Taken,67841\nWickets Taken,9495",
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "P689D2A0564FBD208"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "refId": "A",
+              "root_selector": "",
+              "source": "inline",
+              "type": "csv",
+              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "1. Deliveries Summary",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "P689D2A0564FBD208"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 10,
+            "x": 14,
+            "y": 0
+          },
+          "id": 5,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true
+          },
+          "pluginVersion": "9.3.1",
+          "targets": [
+            {
+              "columns": [],
+              "data": "team,wins,losses,draws\nSunrisers Hyderabad,67,54,3\nChennai Super Kings,106,71,1\nRajasthan Royals,79,78,3\nGujarat Lions,13,16,1\nRoyal Challengers...,89,102,3\nKolkata Knight Ri...,96,92,4\nKings XI Punjab,85,101,4\nDelhi Daredevils,70,89,1\nDelhi Capitals,17,14,2\nMumbai Indians,118,81,4",
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "P689D2A0564FBD208"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "refId": "A",
+              "root_selector": "",
+              "source": "inline",
+              "type": "csv",
+              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "4 Team Summary",
+          "type": "table"
+        },
         {
           "datasource": {
             "type": "yesoreyeram-infinity-datasource",
@@ -66,10 +291,10 @@ data:
             "overrides": []
           },
           "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 0
+            "h": 7,
+            "w": 6,
+            "x": 8,
+            "y": 5
           },
           "id": 7,
           "options": {
@@ -88,7 +313,7 @@ data:
           "targets": [
             {
               "columns": [],
-              "data": "[ {\"percentage\": 60}]",
+              "data": "[ {\"percentage\": 51.77}]",
               "datasource": {
                 "type": "yesoreyeram-infinity-datasource",
                 "uid": "P689D2A0564FBD208"
@@ -109,311 +334,8 @@ data:
               }
             }
           ],
-          "title": "Percentage of players played more than 50%",
+          "title": "3. Percentage of players played more than 50 in a single inning",
           "type": "gauge"
-        },
-        {
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "P689D2A0564FBD208"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "custom": {
-                "align": "auto",
-                "displayMode": "auto",
-                "inspect": false
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 0,
-            "y": 8
-          },
-          "id": 2,
-          "options": {
-            "footer": {
-              "fields": "",
-              "reducer": [
-                "sum"
-              ],
-              "show": false
-            },
-            "showHeader": true
-          },
-          "pluginVersion": "9.3.1",
-          "targets": [
-            {
-              "columns": [],
-              "data": "firstName,lastName,email,phoneNumber\nJohn,Doe,john@doe.com,0123456789\nJane,Doe,jane@doe.com,9876543210\nJames,Bond,james.bond@mi6.co.uk,0612345678",
-              "datasource": {
-                "type": "yesoreyeram-infinity-datasource",
-                "uid": "P689D2A0564FBD208"
-              },
-              "filters": [],
-              "format": "table",
-              "global_query_id": "",
-              "refId": "A",
-              "root_selector": "",
-              "source": "inline",
-              "type": "csv",
-              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
-              "url_options": {
-                "data": "",
-                "method": "GET"
-              }
-            }
-          ],
-          "title": "Data Analysis Summary",
-          "type": "table"
-        },
-        {
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "P689D2A0564FBD208"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "custom": {
-                "align": "auto",
-                "displayMode": "auto",
-                "inspect": false
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 8,
-            "y": 8
-          },
-          "id": 5,
-          "options": {
-            "footer": {
-              "fields": "",
-              "reducer": [
-                "sum"
-              ],
-              "show": false
-            },
-            "showHeader": true
-          },
-          "pluginVersion": "9.3.1",
-          "targets": [
-            {
-              "columns": [],
-              "data": "firstName,lastName,email,phoneNumber\nJohn,Doe,john@doe.com,0123456789\nJane,Doe,jane@doe.com,9876543210\nJames,Bond,james.bond@mi6.co.uk,0612345678",
-              "datasource": {
-                "type": "yesoreyeram-infinity-datasource",
-                "uid": "P689D2A0564FBD208"
-              },
-              "filters": [],
-              "format": "table",
-              "global_query_id": "",
-              "refId": "A",
-              "root_selector": "",
-              "source": "inline",
-              "type": "csv",
-              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
-              "url_options": {
-                "data": "",
-                "method": "GET"
-              }
-            }
-          ],
-          "title": "Data Analysis Summary",
-          "type": "table"
-        },
-        {
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "P689D2A0564FBD208"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "custom": {
-                "align": "auto",
-                "displayMode": "auto",
-                "inspect": false
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 0,
-            "y": 14
-          },
-          "id": 4,
-          "options": {
-            "footer": {
-              "fields": "",
-              "reducer": [
-                "sum"
-              ],
-              "show": false
-            },
-            "showHeader": true
-          },
-          "pluginVersion": "9.3.1",
-          "targets": [
-            {
-              "columns": [],
-              "data": "firstName,lastName,email,phoneNumber\nJohn,Doe,john@doe.com,0123456789\nJane,Doe,jane@doe.com,9876543210\nJames,Bond,james.bond@mi6.co.uk,0612345678",
-              "datasource": {
-                "type": "yesoreyeram-infinity-datasource",
-                "uid": "P689D2A0564FBD208"
-              },
-              "filters": [],
-              "format": "table",
-              "global_query_id": "",
-              "refId": "A",
-              "root_selector": "",
-              "source": "inline",
-              "type": "csv",
-              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
-              "url_options": {
-                "data": "",
-                "method": "GET"
-              }
-            }
-          ],
-          "title": "Data Analysis Summary",
-          "type": "table"
-        },
-        {
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "P689D2A0564FBD208"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                }
-              },
-              "mappings": []
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 8,
-            "y": 14
-          },
-          "id": 3,
-          "options": {
-            "displayLabels": [
-              "name",
-              "value"
-            ],
-            "legend": {
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "pieType": "pie",
-            "reduceOptions": {
-              "calcs": [
-                "count"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "9.3.1",
-          "targets": [
-            {
-              "columns": [],
-              "data": "played, notplayed\n5,6",
-              "datasource": {
-                "type": "yesoreyeram-infinity-datasource",
-                "uid": "P689D2A0564FBD208"
-              },
-              "filters": [],
-              "format": "table",
-              "global_query_id": "",
-              "refId": "A",
-              "root_selector": "",
-              "source": "inline",
-              "type": "uql",
-              "uql": "parse-csv\r\n  summarize \"played\"=count() by \"played\"",
-              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
-              "url_options": {
-                "data": "",
-                "method": "GET"
-              }
-            }
-          ],
-          "title": "Data Analysis Summary",
-          "type": "piechart"
         }
       ],
       "schemaVersion": 37,
@@ -429,8 +351,8 @@ data:
       "timepicker": {},
       "timezone": "",
       "title": "Data Analysis Summary",
-      "uid": null,
-      "version": 8,
+      "uid": "bKY9K3F4k",
+      "version": 1,
       "weekStart": ""
     }             
 kind: ConfigMap
