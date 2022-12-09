@@ -1,11 +1,5 @@
 ---
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: monitoring
-
----
-apiVersion: v1
 data: 
   analysis.json: |
     {
@@ -358,7 +352,6 @@ data:
 kind: ConfigMap
 metadata:
   name: analysis-dashboard
-  namespace: monitoring
   
 ---
 apiVersion: v1
@@ -376,7 +369,6 @@ data:
 kind: ConfigMap
 metadata:
   name: grafana-dashboards
-  namespace: monitoring 
 
 ---
 apiVersion: v1
@@ -395,8 +387,7 @@ data:
     readOnly: false       
 kind: ConfigMap
 metadata:
-  name: grafana-infinity
-  namespace: monitoring        
+  name: grafana-infinity       
   
 ---
 apiVersion: v1
@@ -405,7 +396,6 @@ metadata:
   labels:
     run: grafana
   name: grafana
-  namespace: monitoring
 spec:
   containers:
   - env:
