@@ -437,3 +437,86 @@ kind: ConfigMap
 metadata:
   name: analysis-dashboard
   namespace: monitoring
+  
+---
+apiVersion: v1
+data: 
+  dashboards.yaml: |
+    apiVersion: 1
+    providers:
+     - name: 'analysis'
+       #orgId: 1
+       folder: 'Analysis'
+       #folderUid: ''
+       type: file
+       options:
+         path: /var/lib/grafana/dashboards/analysis.json         
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+  namespace: monitoring 
+
+---
+apiVersion: v1
+data: 
+  infinity.yaml: |
+    apiVersion: 1
+    datasources:
+     - name: "Infinity-1"
+       type: "yesoreyeram-infinity-datasource"
+       url: ""
+       basicAuth: false
+       basicAuthUser: ""
+       isDefault: false
+       jsonData:
+         global_queries: []
+    readOnly: false       
+kind: ConfigMap
+metadata:
+  name: grafana-infinity
+  namespace: monitoring        
+  
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: grafana
+  name: grafana
+  namespace: monitoring
+spec:
+  containers:
+  - env:
+    - name: GF_PATHS_PROVISIONING
+      value: /usr/share/grafana/conf/provisioning
+    - name: GF_SECURITY_ADMIN_PASSWORD
+      value: admin
+    - name: GF_INSTALL_PLUGINS
+      value: yesoreyeram-infinity-datasource  
+    image: grafana/grafana:latest
+    name: grafana
+    ports:
+    - containerPort: 3000
+    resources: {}
+    volumeMounts:
+    - name: analysis-dashboard
+      mountPath: /var/lib/grafana/dashboards/analysis.json
+      subPath: analysis.json      
+    - name: dashboards
+      mountPath: usr/share/grafana/conf/provisioning/dashboards/dashboards.yaml
+      subPath: dashboards.yaml  
+    - name: infinity
+      mountPath: /usr/share/grafana/conf/provisioning/datasources/infinity.yaml
+      subPath: infinity.yaml    
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: infinity
+    configMap:
+      name: grafana-infinity
+  - name: dashboards
+    configMap:
+      name: grafana-dashboards    
+  - name: analysis-dashboard
+    configMap:
+      name: analysis-dashboard       
