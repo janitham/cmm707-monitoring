@@ -1,0 +1,439 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+
+---
+apiVersion: v1
+data: 
+  analysis.json: |
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": {
+              "type": "grafana",
+              "uid": "-- Grafana --"
+            },
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "target": {
+              "limit": 100,
+              "matchAny": false,
+              "tags": [],
+              "type": "dashboard"
+            },
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "fiscalYearStartMonth": 0,
+      "graphTooltip": 0,
+      "id": null,
+      "links": [],
+      "liveNow": false,
+      "panels": [
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "P689D2A0564FBD208"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "percentage",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 50
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "id": 7,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "9.3.1",
+          "targets": [
+            {
+              "columns": [],
+              "data": "[ {\"percentage\": 60}]",
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "P689D2A0564FBD208"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "parser": "simple",
+              "refId": "A",
+              "root_selector": "",
+              "source": "inline",
+              "type": "json",
+              "uql": "parse-csv",
+              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "Percentage of players played more than 50%",
+          "type": "gauge"
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "P689D2A0564FBD208"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 0,
+            "y": 8
+          },
+          "id": 2,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true
+          },
+          "pluginVersion": "9.3.1",
+          "targets": [
+            {
+              "columns": [],
+              "data": "firstName,lastName,email,phoneNumber\nJohn,Doe,john@doe.com,0123456789\nJane,Doe,jane@doe.com,9876543210\nJames,Bond,james.bond@mi6.co.uk,0612345678",
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "P689D2A0564FBD208"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "refId": "A",
+              "root_selector": "",
+              "source": "inline",
+              "type": "csv",
+              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "Data Analysis Summary",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "P689D2A0564FBD208"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 8,
+            "y": 8
+          },
+          "id": 5,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true
+          },
+          "pluginVersion": "9.3.1",
+          "targets": [
+            {
+              "columns": [],
+              "data": "firstName,lastName,email,phoneNumber\nJohn,Doe,john@doe.com,0123456789\nJane,Doe,jane@doe.com,9876543210\nJames,Bond,james.bond@mi6.co.uk,0612345678",
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "P689D2A0564FBD208"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "refId": "A",
+              "root_selector": "",
+              "source": "inline",
+              "type": "csv",
+              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "Data Analysis Summary",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "P689D2A0564FBD208"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 0,
+            "y": 14
+          },
+          "id": 4,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true
+          },
+          "pluginVersion": "9.3.1",
+          "targets": [
+            {
+              "columns": [],
+              "data": "firstName,lastName,email,phoneNumber\nJohn,Doe,john@doe.com,0123456789\nJane,Doe,jane@doe.com,9876543210\nJames,Bond,james.bond@mi6.co.uk,0612345678",
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "P689D2A0564FBD208"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "refId": "A",
+              "root_selector": "",
+              "source": "inline",
+              "type": "csv",
+              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "Data Analysis Summary",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "P689D2A0564FBD208"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 8,
+            "y": 14
+          },
+          "id": 3,
+          "options": {
+            "displayLabels": [
+              "name",
+              "value"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "count"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "9.3.1",
+          "targets": [
+            {
+              "columns": [],
+              "data": "played, notplayed\n5,6",
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "P689D2A0564FBD208"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "refId": "A",
+              "root_selector": "",
+              "source": "inline",
+              "type": "uql",
+              "uql": "parse-csv\r\n  summarize \"played\"=count() by \"played\"",
+              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "Data Analysis Summary",
+          "type": "piechart"
+        }
+      ],
+      "schemaVersion": 37,
+      "style": "dark",
+      "tags": [],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "Data Analysis Summary",
+      "uid": null,
+      "version": 8,
+      "weekStart": ""
+    }             
+kind: ConfigMap
+metadata:
+  name: analysis-dashboard
+  namespace: monitoring
