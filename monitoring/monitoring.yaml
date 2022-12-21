@@ -24,14 +24,7 @@ data:
        #folderUid: ''
        type: file
        options:
-         path: /var/lib/grafana/dashboards/prod.json
-     - name: 'analysis'
-       #orgId: 1
-       folder: 'Analysis'
-       #folderUid: ''
-       type: file
-       options:
-         path: /var/lib/grafana/dashboards/analysis.json         
+         path: /var/lib/grafana/dashboards/prod.json       
 kind: ConfigMap
 metadata:
   name: grafana-dashboards
@@ -49,14 +42,6 @@ data:
        url: http://prometheus:9090
        version: 1
        editable: false
-     - name: "Infinity-1"
-       type: "yesoreyeram-infinity-datasource"
-       url: ""
-       basicAuth: false
-       basicAuthUser: ""
-       isDefault: false
-       jsonData:
-         global_queries: []
     readOnly: false       
 kind: ConfigMap
 metadata:
@@ -149,10 +134,7 @@ spec:
       subPath: test.json
     - name: prod-dashboard
       mountPath: /var/lib/grafana/dashboards/prod.json
-      subPath: prod.json
-    - name: analysis-dashboard
-      mountPath: /var/lib/grafana/dashboards/analysis.json
-      subPath: analysis.json      
+      subPath: prod.json     
     - name: dashboards
       mountPath: usr/share/grafana/conf/provisioning/dashboards/dashboards.yaml
       subPath: dashboards.yaml  
@@ -173,10 +155,7 @@ spec:
       name: test-dashboard
   - name: prod-dashboard
     configMap:
-      name: prod-dashboard
-  - name: analysis-dashboard
-    configMap:
-      name: analysis-dashboard       
+      name: prod-dashboard     
   
 ---
 apiVersion: v1
